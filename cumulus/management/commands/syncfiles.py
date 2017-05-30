@@ -99,7 +99,7 @@ class Command(BaseCommand):
         self.skip_count = 0
         self.delete_count = 0
 
-    def handle_noargs(self, *args, **options):
+    def handle(self, *args, **options):
         # setup
         self.set_options(options)
         self._connection = Auth()._get_connection()
