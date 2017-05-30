@@ -5,7 +5,7 @@ import os
 import re
 
 from django.conf import settings
-from django.core.management.base import CommandError, NoArgsCommand
+from django.core.management.base import CommandError, BaseCommand
 
 
 from cumulus.authentication import Auth
@@ -13,9 +13,9 @@ from cumulus.settings import CUMULUS
 from cumulus.storage import get_headers, get_content_type, get_gzipped_contents
 
 
-class Command(NoArgsCommand):
+class Command(BaseCommand):
     help = "Synchronizes project static *or* media files to cloud files."
-    option_list = NoArgsCommand.option_list + (
+    option_list = BaseCommand.option_list + (
         optparse.make_option("-i", "--include", action="append", default=[],
                              dest="includes", metavar="PATTERN",
                              help="Include file or directories matching this glob-style "
