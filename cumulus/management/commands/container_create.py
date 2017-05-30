@@ -10,9 +10,9 @@ class Command(BaseCommand):
     help = "Create a container."
     args = "[container_name]"
 
-    option_list = BaseCommand.option_list + (
-        optparse.make_option("-p", "--private", action="store_true", default=False,
-                             dest="private", help="Make a private container."),)
+    def add_arguments(self, parser):
+        parser.add_argument("-p", "--private", action="store_true", default=False,
+                            dest="private", help="Make a private container.")
 
     def handle(self, *args, **options):
         if len(args) != 1:

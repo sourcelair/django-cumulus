@@ -9,9 +9,9 @@ class Command(BaseCommand):
     help = "Delete a container."
     args = "[container_name]"
 
-    option_list = BaseCommand.option_list + (
-        optparse.make_option("-y", "--yes", action="store_true", default=False,
-                             dest="is_yes", help="Assume Yes to confirmation question"),)
+    def add_arguments(self, parser):
+        parser.add_argument("-y", "--yes", action="store_true", default=False,
+                            dest="is_yes", help="Assume Yes to confirmation question")
 
     def handle(self, *args, **options):
         if len(args) != 1:
